@@ -61,7 +61,7 @@ function PostImages(props) {
                 <Image
                   width='100%'
                   preview={false}
-                  src={item.src.replace('uploads','thumb')} //`${BACK_URL}/${item.src}`
+                  src={item.src} //`${BACK_URL}/${item.src}`
                 />
               </div>
             );
