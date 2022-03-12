@@ -58,7 +58,6 @@ app.use(session({
     httpOnly: true,
     secure:false,
     domain: process.env.NODE_ENV ==='production' && '.tweeter.ga',
-    secret:'rkawkclqdkwnaktdlTwy'
   }
 }))
 app.use(passport.initialize())
