@@ -1,0 +1,15 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "image resizzing",
+  "main": "lambda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shinh",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1087.0",
+    "sharp": "^0.30.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecamVersion": 2020,
+    "sourceType": "module",
+    "ecamFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": "airbnb",
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    "import",
+    "react-hooks"
+  ]
+}
