@@ -239,7 +239,7 @@ router.post('/delete', async (req, res, next) => {
 })
 
 router.get('/:PostId/retweet', async (req, res, next) => {
-
+  console.log(req.headers.cookie)
   try {
     if (!req.user.id) { return res.status(403).json({ msg: '로그인이 필요합니다.' }) }
 

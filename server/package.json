@@ -7,7 +7,6 @@
     "dev": "nodemon app.js",
     "start": "cross-env NODE_ENV=production pm2 start app.js",
     "test": "cross-env NODE_ENV=production node app.js"
-
   },
   "author": "shinh",
   "license": "ISC",
