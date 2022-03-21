@@ -133,6 +133,11 @@ router.patch('/editpost', upload.array('image'), async (req, res, next) => {
       await post.addHashtags(tagValue.map((tag) => tag[0]))
     }
 
+    if(req.body.rmImageId){
+      await Promise.all(req.body.rmImageId.map((id)=>db.Image.destroy({
+        where:{id:id}
+      })))
+    }
 
     if (req.files) {
       await Promise.all(req.files.map((image) => db.Image.create({

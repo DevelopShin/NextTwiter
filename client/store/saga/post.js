@@ -52,7 +52,6 @@ const editPostAPI=(data) => {return axios.patch('/api/post/editpost', data )}
 function* editPost(action) {
   try {
     const result = yield call(editPostAPI, action.payload)
-    console.log('editpost:  ', result.data)
     yield put(
       {
       type: EDIT_POST_SUCCESS,

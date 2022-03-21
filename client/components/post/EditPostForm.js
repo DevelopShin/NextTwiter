@@ -31,31 +31,32 @@ function EditPost({ post, setShowEdit, showEdit }) {
 
   const [fileList, setFileList] = useState([]);
   useEffect( async ()=>{
+    console.log(post.Images)
     if(post.Images.length > 0){
-      setFileList(post.Images.map((image)=>{return ({url:image.src, status:'done'})}))
+      setFileList(post.Images.map((image)=>{return ({url:image.src, status:'done',id:image.id})}))
     }
   },[showEdit])
 
   const onChange = ({ fileList: newFileList }) => {
-    console.log("파일리스트  ",fileList)
 
     setFileList(newFileList)
 
   }
-
-
-
+//이미지 제거 
+  const [rmImageId, setRmImageId] = useState([])
+  const getRmImageId = (e) => {
+    setRmImageId([...rmImageId, e.id])
+  }
   /////////////////////////////////////////////////////////////////
   const onsubmit = useCallback(async () => {
-
     if (fileList[0] && fileList[fileList.length - 1].originFileObj) {
-      console.log('폼데이터 ')
       const formData = new FormData();
-      [].forEach.call(fileList, (f) => {
+      await [].forEach.call(fileList, (f) => {
         formData.append('image', f.originFileObj && f.originFileObj)
       })
       formData.append('content', text)
       formData.append('PostId', post.id)
+      formData.append('rmImageId', rmImageId)
 
       dispatch({
         type: "EDIT_POST_REQUEST",
@@ -68,10 +69,11 @@ function EditPost({ post, setShowEdit, showEdit }) {
           payload: {
             content: text,
             PostId: post.id,
+            rmImageId:rmImageId
           }
         })
     }
-  }, [text, fileList])
+  }, [text, fileList, rmImageId])
 
 
 
@@ -115,11 +117,12 @@ function EditPost({ post, setShowEdit, showEdit }) {
           // beforeUpload={}
 
           style={{ position: 'relative', top: "-20px" }}
+          showUploadList={{showPreviewIcon:false}}
           // action={BACK_URL}
           listType="picture-card"
           fileList={fileList}
           onChange={onChange}
-          // onPreview={false}
+          onRemove={(e)=>getRmImageId(e)}
           multiple
         >
           {fileList.length < 5 && '+ Upload'}
