@@ -6,7 +6,7 @@ import {default as MessageOutlined}from '@ant-design/icons/lib/icons/MessageOutl
 import {default as RetweetOutlined}from '@ant-design/icons/lib/icons/RetweetOutlined';
 
 
-import { Card, Button, Avatar, Popover, Modal, Comment, Tooltip,  } from 'antd';
+import { Card, Button, Avatar, Popover, Comment, Tooltip,  message} from 'antd';
 import ButtonGroup from 'antd/lib/button/button-group';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -40,7 +40,7 @@ export function Cards(props) {
 
   useEffect(()=>{
     if(retweetDone && retweetPostId===post.id){
-      alert(`""${post.User.nickname}"" 님의 글을 리트윗 하였습니다.`)
+      message.success(`<${post.User.nickname}> 님의 글을 리트윗 하였습니다.`)
     }
   },[retweetDone,retweetPostId]) 
 
