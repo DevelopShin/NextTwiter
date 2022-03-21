@@ -44,9 +44,13 @@ function EditPost({ post, setShowEdit, showEdit }) {
   }
 //이미지 제거 
   const [rmImageId, setRmImageId] = useState([])
-  const getRmImageId = (e) => {
+  const getRmImageId = useCallback((e) => {
+    const result =confirm('정말 삭제하시겠습니까 ?')
+    if(!result){
+      return false
+    }
     setRmImageId([...rmImageId, e.id])
-  }
+  },[])
   /////////////////////////////////////////////////////////////////
   const onsubmit = useCallback(async () => {
     if (fileList[0] && fileList[fileList.length - 1].originFileObj) {
