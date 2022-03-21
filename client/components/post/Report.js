@@ -5,7 +5,7 @@ import useInput from '../../hooks/useInput';
 function Report({post, isModalVisible, setIsModalVisible}) {
   const dispatch = useDispatch()
   const { me } = useSelector((state) => state.user)
-  const { reportDone, reportLoading } = useSelector((state) => state.post)
+  const { reportDone, reportLoading,reportPostId } = useSelector((state) => state.post)
 
   const [reportText, onChangeReportText, setReportText] = useInput('')
 
@@ -18,15 +18,15 @@ function Report({post, isModalVisible, setIsModalVisible}) {
         PostId: post.id,
         UserId: me.id}
           })
-  }, [reportText])
+  }, [reportText, ])
 
   useEffect(()=>{
-    if(reportDone){
+    if(reportDone&& reportPostId==post.id){
       setReportText("")
       setIsModalVisible(false)
       message.success('정상적으로 신고접수 되었습니다.')
     }
-  },[reportDone])
+  },[reportDone,reportPostId])
   return (
     <Modal 
       title="!!!" 

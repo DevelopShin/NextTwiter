@@ -20,7 +20,8 @@ export default class MyDocument extends Document {
           </>
         )
       }
-    } catch (err) { console(err) }
+    } catch (err) {
+       console.log(err) }
     finally {
       sheet.seal()
     }

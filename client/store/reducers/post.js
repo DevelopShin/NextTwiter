@@ -52,6 +52,7 @@ export const initialState = {
 
   reportDone: false,
   reportLoading: false,
+  reportPostId: null,
   reportErr: null,
 
   retweetDone: false,
@@ -70,6 +71,7 @@ const post = (state = initialState, action) => {
       case REPORT_POST_REQUEST:
         draft.reportLoading = true;
         draft.reportDone = false;
+        draft.reportPostId = action.payload.PostId
         break;
 
       case REPORT_POST_SUCCESS:
