@@ -96,10 +96,10 @@ function EditPost({ post, setShowEdit, showEdit }) {
           required
         />
         <div>
-          <Button type='primary' onClick={showImage}> 이미지 업로드</Button>
+          <Button type='primary' onClick={showImage}> 이미지 수정</Button>
           <Button type='primary' style={{ float: 'right' }}
             htmlType='submit' loading={editPostLoading}
-            disabled={fileList.length && fileList[fileList.length - 1].status === "uploading" && "disabled"} >작성</Button>
+            disabled={fileList.length && fileList[fileList.length - 1].status === "uploading" && "disabled"} >저장</Button>
           <Button style={{float:'right', marginRight:"10px"}} onClick={()=>setShowEdit(false)}> 취소</Button>
           
         </div>
