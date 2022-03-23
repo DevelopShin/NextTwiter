@@ -25,6 +25,16 @@ export const MenuStyle = styled(Menu)`
   }
 `;
 
+export const UserSticky = styled.div`
+
+@media screen and (max-width: 575px){
+  position: sticky;
+  top: -120px;
+  z-index: 111;
+  border-bottom: solid 3px gray;
+  }
+`
+
 export const Container = styled.div`
   margin: 0 auto;
   max-width: 960px;
@@ -33,6 +43,13 @@ export const Container = styled.div`
   
   @media screen and (max-width: 575px){
   padding:0;
+
+  .info{
+    position: sticky;
+    top: -97px;
+    z-index: 111;
+    /* border-bottom: solid 3px gray; */
+  }
 
   }
 `
