@@ -2,11 +2,20 @@ import styled from 'styled-components'
 
 
 export const StyledButton = styled.div`
-  @media screen and (max-width:575px){
+
     position: absolute;
-    top: 15px;
-    right: 15px;
-  }
+    top: 20px;
+    right: 10px;
+
+    button{
+      background-color: #fff ;
+      padding: 1px 2px;
+      border: none;
+      /* border-bottom: solid 1px #1890ff ; */
+      color: #1890ff;
+      font-weight: bold ;
+    }
+  
 `
 
 export const UserPr = styled.div`

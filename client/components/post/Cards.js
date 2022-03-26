@@ -26,7 +26,6 @@ import Report from './Report';
 
 export function Cards(props) {
 
-
   const dispatch = useDispatch()
   const post = props.post
   const myId = useSelector((state) => state.user.me?.id)

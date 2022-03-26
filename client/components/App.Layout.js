@@ -36,12 +36,12 @@ function AppLayout({userPrNone, children}) {
           </Menu.Item>
 
         </MenuStyle>
-      </HeaderContainer>
+      </HeaderContainer >
 
       <Container>
         <Row gutter={5} className='row'> {/*xs sm md lg xl xxl*/}
-          {userPrNone&&  userPrNone ? null : <Col xs={24} sm={8} lg={6} className='info'> {(loginDone || me ) ? <Sticky><UserProfile/></Sticky> :<Sticky><LoginForm /></Sticky> }</Col>}
-          <Col xs={24} sm={16} lg={18}className='contants'> {children}  </Col>
+          {userPrNone&&  userPrNone ? null : <Col xs={24} md={7}  className='info'> {(loginDone || me ) ? <Sticky><UserProfile/></Sticky> :<Sticky><LoginForm /></Sticky> }</Col>}
+          <Col xs={24} md={17} className='contants'> {children}  </Col>
           {/* <Col xs = {24} md={4}>cnrk</Col> */}
         </Row>
       </Container>

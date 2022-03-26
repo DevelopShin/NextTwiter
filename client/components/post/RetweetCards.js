@@ -19,7 +19,7 @@ import { RETWEET_REQUEST } from '../../store/types';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 import "moment/locale/ko";
-
+import Report from './Report';
 export function RetweetCards(props) {
 
   const dispatch = useDispatch()
@@ -63,11 +63,24 @@ export function RetweetCards(props) {
       payload: { PostId: post.id }
     })
   }
+// 신고
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const onReport = useCallback(()=>{
+    if(!myId){
+      return(
+        alert('로그인이필요합니다.')
+      )
+    }
+    setIsModalVisible(true)
 
-
+  })
 
   return (
     <CardContainer>
+      <Report  
+        isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}
+        post = {post}
+      />
       <CardStyled
         title={<OwnerInfo post = {post.Retweet}/>}
         cover={post.Retweet.Images && post.Retweet.Images[0] && <PostImages retweet={true} images={post.Retweet.Images} />}
@@ -87,7 +100,7 @@ export function RetweetCards(props) {
                   {/* <Button >수정</Button> */}
                   <Button type='danger' onClick={onRemovePost}>삭제</Button>
                 </>
-                : <Button type='danger'>신고</Button>
+                : <Button type='danger' onClick={onReport}>신고</Button>
               }
             </ButtonGroup>
           )}>
