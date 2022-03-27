@@ -99,8 +99,8 @@ function LoginForm() {
       
       <Submit >
         <div className='btns'>
+        <Button><Link href='/signup'><a>회원가입</a></Link></Button>
           <Button type='primary' htmlType='submit' loading={loginLoading}>로그인</Button>
-          <Button><Link href='/signup'><a>회원가입</a></Link></Button>
         </div>
         <p><Link href='/signup'><a>비밀번호찾기</a></Link></p>
       </Submit>
