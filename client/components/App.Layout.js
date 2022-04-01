@@ -40,7 +40,7 @@ function AppLayout({userPrNone, children}) {
 
       <Container>
         <Row gutter={5} className='row'> {/*xs sm md lg xl xxl*/}
-          {userPrNone&&  userPrNone ? null : <Col xs={24} md={7}  className='info'> {(loginDone || me ) ? <Sticky><UserProfile/></Sticky> :<Sticky><LoginForm /></Sticky> }</Col>}
+          {userPrNone&&  userPrNone ? null : <Col xs={24} md={7}  className={me&&'info'}> {(loginDone || me ) ? <Sticky><UserProfile className="profiles"/></Sticky> :<Sticky><LoginForm /></Sticky> }</Col>}
           <Col xs={24} md={17} className='contants'> {children}  </Col>
           {/* <Col xs = {24} md={4}>cnrk</Col> */}
         </Row>
