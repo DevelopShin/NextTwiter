@@ -31,7 +31,7 @@ export const Container = styled.div`
   min-width: 360px;
   padding:30px 5px;
   
-  @media screen and (max-width: 575px){
+  @media screen and (max-width: 767px){
   padding:0;
 
   .info{
