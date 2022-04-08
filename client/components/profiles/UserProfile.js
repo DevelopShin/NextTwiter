@@ -37,7 +37,7 @@ function UserProfile(props) {
           description={me.descrip ? me.descrip : "your description"}/>
       </Card>
       <StyledButton>
-        <button onClick={logautHandler} loading={logoutLoading}>Logout</button>
+        <button onClick={logautHandler} >Logout</button>
       </StyledButton>
       <br/>
     </>

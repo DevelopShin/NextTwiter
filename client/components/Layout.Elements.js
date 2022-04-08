@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Menu, Input, Row, Col } from 'antd'
+import { Menu, Input, Row, Col, Button } from 'antd'
 
 export const Warapper=styled.div`
   width: 100%;
@@ -9,16 +9,15 @@ export const Warapper=styled.div`
   background-color: #f6f2;
 `
 export const HeaderContainer = styled.div`
-  width: 100%;
+  /* width: 100%; */
+  min-width: 360px;
   background-color: #fff;
   border-bottom: 1px solid gray;
 
 `
 export const MenuStyle = styled(Menu)`
+  z-index: 1;
   margin: 0 auto;
-  max-width: 1080px;
-  min-width: 360px;
-
   a{
     font-weight: bold;
     font-size: 1rem;
@@ -39,7 +38,7 @@ export const Container = styled.div`
     top: -97px;
     z-index: 111;
     /* border-bottom: solid 3px gray; */
-  }
+  };
 
   }
 `
@@ -52,6 +51,20 @@ export const Sticky = styled.div`
   /* min-width: 231px; */
   position: sticky;
   top: 10px;
+
+  @media screen and (max-width: 767px){
+    .login-form{
+      display: none ;
+  };
+  margin-bottom: 10px;
+  
+  }
+
 `
 
 
+export const ButtonModal= styled(Button)`
+  position:'absolute';
+  top:'7px';
+  right:'5px'
+`

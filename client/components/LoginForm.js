@@ -8,16 +8,6 @@ import { useSelector } from 'react-redux';
 import Router from 'next/router';
 const FormStyle = styled(Form)`
   max-Width: 600px;
-  /* max-Width: 200px; */
-  margin-Right:10px;
-  float: center;
-
-  @media screen and (max-width:575px){
-    max-width: none;
-    float: none;
-    margin:10px 20px 20px ;
-
-  }
 `
 const Submit = styled.div`
 
@@ -100,7 +90,7 @@ function LoginForm() {
       <Submit >
         <div className='btns'>
         <Button><Link href='/signup'><a>회원가입</a></Link></Button>
-          <Button type='primary' htmlType='submit' loading={loginLoading}>로그인</Button>
+          <Button type='primary' htmlType='submit'>로그인</Button>
         </div>
         <p><Link href='/signup'><a>비밀번호찾기</a></Link></p>
       </Submit>
