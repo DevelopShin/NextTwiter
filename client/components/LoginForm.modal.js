@@ -8,6 +8,10 @@ import Router from 'next/router';
 
 const FormStyle = styled(Form)`
 max-Width: 500px;
+.login_messeage{
+  font-size: 10px;
+  color: red;
+}
 `
 const Submit = styled.div`
 
@@ -26,27 +30,31 @@ function LoginModal({ isModalVisible, setIsModalVisible }) {
   const mounted = useRef(false)
   const dispatch = useDispatch()
   const { loginLoading, loginErr, me } = useSelector((state) => state.user)
+  const [loginMsg, setLoginMsg] = useState('')
   const [email, setEmail] = useState('')
   const onChangeEmail = useCallback((e) => {
     setEmail(e.target.value)
   }, [])
 
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true
 
-    } else {
-      if (loginErr) {
-        console.log(loginErr)
-        alert(loginErr)
-      }
-    }
-  }, [loginErr])
+  //   } else {
+  //     if (loginErr) {
+  //       setLoginMsg(loginErr)
+  //       setTimeout(()=>{
+  //         setLoginMsg('')
+  //       },2500)
+  //     }0
+  //   }
+  // }, [loginErr])
+
 
   useEffect(() => {
     if (me?.id) {
       setIsModalVisible(false)
-      Router.replace('/')
+      // Router.replace('/')
     }
   }, [me?.id])
 
@@ -60,6 +68,7 @@ function LoginModal({ isModalVisible, setIsModalVisible }) {
     dispatch(loginAction({ email, password }));
 
   }, [email, password, me, loginErr])
+
 
 
   return (
@@ -112,4 +121,4 @@ function LoginModal({ isModalVisible, setIsModalVisible }) {
   )
 }
 
-export default LoginModal
+export default React.memo(LoginModal)
