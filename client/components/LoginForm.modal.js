@@ -37,17 +37,11 @@ function LoginModal({ isModalVisible, setIsModalVisible }) {
   }, [])
 
   // useEffect(() => {
-  //   if (!mounted.current) {
-  //     mounted.current = true
 
-  //   } else {
   //     if (loginErr) {
-  //       setLoginMsg(loginErr)
-  //       setTimeout(()=>{
-  //         setLoginMsg('')
-  //       },2500)
-  //     }0
-  //   }
+  //       alert(loginErr)
+  //     }
+    
   // }, [loginErr])
 
 
