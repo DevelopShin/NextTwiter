@@ -4,7 +4,7 @@ import { IconWrap } from './PostIcon.Elements'
 function PostIcon() {
   const [iconShow, setIconShow] = useState(false)
   const handleFollow = () => {
-    setIconShow(window.scrollY > 230)
+    setIconShow(window.scrollY > 300)
   }
 
 
