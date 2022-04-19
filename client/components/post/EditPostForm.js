@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { UploadStyle } from './style';
 import { ADD_POST_REQUEST, } from '../../store/types';
 function EditPost({ post, setShowEdit, showEdit }) {
-
+  const useDev = process.env.NODE_ENV !== "production"
   const dispatch = useDispatch()
   const { editPostDone, editPostLoading } = useSelector((state) => state.post);
   const { me } = useSelector((state) => state.user)
@@ -33,7 +33,11 @@ function EditPost({ post, setShowEdit, showEdit }) {
   useEffect( async ()=>{
     console.log(post.Images)
     if(post.Images.length > 0){
-      setFileList(post.Images.map((image)=>{return ({url:image.src, status:'done',id:image.id})}))
+      setFileList(post.Images.map((image)=>{return ({
+        url:`${                  
+          useDev
+        ? `${BACK_URL}/${image.src}`
+        : image.src}}`, status:'done',id:image.id})}))
     }
   },[showEdit])
 
@@ -123,6 +127,7 @@ function EditPost({ post, setShowEdit, showEdit }) {
           style={{ position: 'relative', top: "-20px" }}
           showUploadList={{showPreviewIcon:false}}
           // action={BACK_URL}
+          
           listType="picture-card"
           fileList={fileList}
           onChange={onChange}

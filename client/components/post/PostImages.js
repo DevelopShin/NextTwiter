@@ -10,6 +10,8 @@ import { BACK_URL } from '../../config/config';
 
 
 function PostImages(props) {
+  const useDev = process.env.NODE_ENV !== 'production'
+
   const images = props.images
   const [imgIndex, setImageIndex] = useState(1)
   const [visible, setVisible] = useState(false);
@@ -55,13 +57,13 @@ function PostImages(props) {
         // beforeChange={}
         >
 
-          {images.map((item, index) => {
+          {images.map((image, index) => {
             return (
-              <div key={item.id} >
+              <div key={image.id} >
                 <Image
                   width='100%'
                   preview={false}
-                  src={item.src} //`${BACK_URL}/${item.src}`
+                  src={useDev ? `${BACK_URL}/${image.src}` : image.src} //`${BACK_URL}/${image.src}`
                 />
               </div>
             );
@@ -72,7 +74,8 @@ function PostImages(props) {
         <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
           {images.map((image) => {
             return (
-              <Image key={image.id} src={image.src} />
+              <Image key={image.id} 
+                src={useDev ? `${BACK_URL}/${image.src}` : image.src} />
             )
           })}
 

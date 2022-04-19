@@ -7,7 +7,11 @@ const { isLogin } = require('../config/isAuth');
 const fs = require('fs')
 const multerS3 = require('multer-s3')
 const AWS = require('aws-sdk')
+const dotenv = require('dotenv')
+dotenv.config()
 
+
+const useDev = process.env.NODE_ENV !=='production'
 
 
 AWS.config.update({
@@ -27,28 +31,30 @@ const upload = multer({
   limits: { fileSize: 20 * 1024 * 1024 }, //20MB
 })
 
-// try {
-//   fs.accessSync('uploads');
-// } catch (error) {
-//   console.log('uploads 폴더가 없으므로 생성합니다.');
-//   fs.mkdirSync('uploads');
-// }
-// const upload_dev = multer({
-//   storage: multer.diskStorage({
-//     destination(req, file, done) {
-//       done(null, 'uploads')
-//     },
-//     filename(req, file, done) {
-//       const ext = path.extname(file.originalname) //확장자 추출
-//       const baseName = path.basename(file.originalname, ext)
-//       done(null, baseName + new Date().getTime() + ext)
-//     },
-//   }),
-//   limits: { fileSize: 20 * 1024 * 1024 }, //20MB
-// })
+try {
+  fs.accessSync('uploads');
+} catch (error) {
+  console.log('uploads 폴더가 없으므로 생성합니다.');
+  fs.mkdirSync('uploads');
+}
+const upload_dev = multer({
+  storage: multer.diskStorage({
+    destination(req, file, done) {
+      done(null, 'uploads')
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname) //확장자 추출
+      const baseName = path.basename(file.originalname, ext)
+      done(null, baseName + new Date().getTime() + ext)
+    },
+  }),
+  limits: { fileSize: 20 * 1024 * 1024 }, //20MB
+})
 
 
-router.post('/addpost', upload.array('image'), async (req, res, next) => {
+router.post('/addpost', useDev 
+  ? upload_dev.array('image')
+  : upload.array('image'), async (req, res, next) => {
 
   try {
     if (!req.user.id) { return res.status(403).json({ msg: '로그인이 필요합니다.' }) }
@@ -71,7 +77,7 @@ router.post('/addpost', upload.array('image'), async (req, res, next) => {
 
     if (req.files) {
       await Promise.all(req.files.map((image) => db.Image.create({
-        src: image.location,
+        src: useDev ? image.filename :image.location,
         PostId: post.id
       })))
 
@@ -105,7 +111,9 @@ router.post('/addpost', upload.array('image'), async (req, res, next) => {
 })
 
 
-router.patch('/editpost', upload.array('image'), async (req, res, next) => {
+router.patch('/editpost', useDev 
+  ? upload_dev.array('image')
+  : upload.array('image'), async (req, res, next) => {
 
   try {
     if (!req.user.id) { return res.status(403).json({ msg: '로그인이 필요합니다.' }) }
@@ -141,7 +149,7 @@ router.patch('/editpost', upload.array('image'), async (req, res, next) => {
 
     if (req.files) {
       await Promise.all(req.files.map((image) => db.Image.create({
-        src: image.location,
+        src: useDev ? image.filename :image.location,
         PostId: post.id
       })))
 
