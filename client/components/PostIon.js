@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import { default as EditOutLined } from '@ant-design/icons/lib/icons/EditOutLined'
+import { default as FormOutlined } from '@ant-design/icons/lib/icons/FormOutlined'
+
 import { IconWrap } from './PostIcon.Elements'
 function PostIcon() {
   const [iconShow, setIconShow] = useState(false)
@@ -26,8 +27,8 @@ function PostIcon() {
       {iconShow &&
 
         <IconWrap onClick={goToEdit}>
-          <EditOutLined />
-          포스트 쓰기
+          <FormOutlined /> 
+          {" "}포스트 쓰기
         </IconWrap>
       }
     </>
