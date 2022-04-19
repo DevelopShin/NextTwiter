@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from 'react'
 import { default as FormOutlined } from '@ant-design/icons/lib/icons/FormOutlined'
-
+import { useSelector } from 'react-redux'
 import { IconWrap } from './PostIcon.Elements'
 function PostIcon() {
+  const { me } = useSelector((state) => state.user)
+
   const [iconShow, setIconShow] = useState(false)
   const handleFollow = () => {
     setIconShow(window.scrollY > 300)
@@ -20,7 +22,13 @@ function PostIcon() {
   })
 
   const goToEdit = (params) => {
-    document.getElementById('newpost').focus()
+    if(!me){
+      alert('로그인이 필요합니다.')
+      
+    }else {
+      document.getElementById('newpost').focus()
+
+    }
   }
   return (
     <>
