@@ -10,6 +10,7 @@ import GlobalStyle from '../globalStyle'
 import useInput from '../hooks/useInput'
 import { useRouter } from 'next/router'
 import LoginModal from './LoginForm.modal'
+import PostIcon from './PostIon'
 function AppLayout({userPrNone, children}) {
   const dispatch = useDispatch()
 
@@ -53,8 +54,8 @@ function AppLayout({userPrNone, children}) {
             {(loginDone || me ) 
               ? <Sticky><UserProfile className="profiles"/></Sticky> 
               :<Sticky ><div className='login-form'><LoginForm /></div></Sticky> }</Col>}
-          <Col xs={24} md={17} className='contants'> {children}  </Col>
-          {/* <Col xs = {24} md={4}>cnrk</Col> */}
+          <Col xs={24} md={17} className='contants'><PostIcon/> {children}  </Col>
+          
         </Row>
       </Container>
     </Warapper>

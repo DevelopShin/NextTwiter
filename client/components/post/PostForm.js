@@ -79,9 +79,10 @@ function PostForm() {
   /////////////////////////////////////////////////////////////////
 
   return (
-    <>
+    <div>
       <Form style={{ margin: '0 0 20px', borderBottom: 'solid 2px gray' }} encType="multipart/form-data" onFinish={onsubmit}>
         <Input.TextArea
+          id='newpost'
           value={text}
           onChange={onChangeText}
           maxLength={140}
@@ -125,7 +126,7 @@ function PostForm() {
         // </ImgCrop>
       }
 
-    </>
+    </div>
   );
 }
 
