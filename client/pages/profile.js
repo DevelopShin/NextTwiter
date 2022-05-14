@@ -17,12 +17,12 @@ function profile() {
 
   useEffect(() => {
 
-    if (! me?.id) {
+    if (!me?.id) {
       alert('로그인이 필요합니다.')
       Router.push('/')
     }
 
-  }, [ ])
+  }, [])
 
   // if (!me) {
   //   return (null)
