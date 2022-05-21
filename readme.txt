@@ -1,0 +1,1 @@
+mongosh "mongodb+srv://nodereact1.25pdz.mongodb.net/myFirstDatabase" --username shinh

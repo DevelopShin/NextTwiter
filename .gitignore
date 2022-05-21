@@ -10,3 +10,4 @@ node_modules
 .nuxt
 */front/build
 .DS_Store
+/newfile
