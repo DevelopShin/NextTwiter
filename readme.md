@@ -1,6 +1,6 @@
 sns 클론 코딩
 ```
-stech:
+tech:
 frontend:
 - nextjs 
 - redux-saga
