@@ -10,17 +10,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../../components/App.Layout';
 function User() {
   const { userInfo, me } = useSelector((state) => state.user)
-  const {mainPosts} = useSelector((state)=>state.post)
+  const { mainPosts } = useSelector((state) => state.post)
   const dispatch = useDispatch()
   const router = useRouter();
-  const { userId } = router.query
+
+  const { userId } = router.query;
   // const fetcher = (url)=> axios.get(url,{withCredentials:true}). then((result)=>result.data)
   const loadUserPost = useCallback(() => {
     dispatch({
       type: 'LOAD_USER_POST_REQUEST',
-      userId:userId,
+      userId: userId,
     })
-  },[userId])
+  }, [userId])
 
   return (
     <AppLayout userPrNone={me?.id === userInfo.id ? false : true}>

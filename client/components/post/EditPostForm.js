@@ -3,6 +3,7 @@ import { Button, Form, Input, } from 'antd'
 import { useSelector, useDispatch } from 'react-redux';
 import { UploadStyle } from './style';
 import { ADD_POST_REQUEST, } from '../../store/types';
+import { BACK_URL } from '../../config/config';
 function EditPost({ post, setShowEdit, showEdit }) {
   const useDev = process.env.NODE_ENV !== "production"
   const dispatch = useDispatch()
@@ -37,7 +38,7 @@ function EditPost({ post, setShowEdit, showEdit }) {
         url:`${                  
           useDev
         ? `${BACK_URL}/${image.src}`
-        : image.src}}`, status:'done',id:image.id})}))
+        : image.src}`, status:'done',id:image.id})}))
     }
   },[showEdit])
 

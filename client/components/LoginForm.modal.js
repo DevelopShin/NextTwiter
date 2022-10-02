@@ -71,7 +71,7 @@ function LoginModal({ isModalVisible, setIsModalVisible }) {
           로그인
         </Button>,
         <p key="modal_singup">
-          <Link href="/signup">
+          <Link href="/signup" scroll={false}>
             <a>회원가입</a>
           </Link>
         </p>,

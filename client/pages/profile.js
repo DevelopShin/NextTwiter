@@ -46,6 +46,7 @@ function profile() {
 export const getServerSideProps = wrapper.getServerSideProps(
 
   (store) => async ({ req }) => {
+    console.log("헤더: ",req.headers)
     const cookie = req ? req.headers.cookie : '';
     axios.defaults.headers.Cookie = '';
     if (req && cookie) {
