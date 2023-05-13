@@ -1,28 +1,27 @@
-const withPlugins = require('next-compose-plugins');
+const withPlugins = require("next-compose-plugins");
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
 });
-
-
 
 // const withMDX = require("@next/mdx")({
 //     extension: /\.mdx?$/,
 // });
 
-module.exports = withPlugins([[withBundleAnalyzer],], {
+module.exports = withPlugins([[withBundleAnalyzer]], {
   pageExtensions: ["js", "jsx", "md", "mdx"],
   compress: true,
+  output: "standalone",
   future: {
-      webpack5: true,
+    webpack5: true,
   },
   webpack: (config, { webpack }) => {
-    const prod = process.env.NODE_ENV === 'production';
+    const prod = process.env.NODE_ENV === "production";
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
       use: [
         {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 8192,
           },
@@ -46,20 +45,15 @@ module.exports = withPlugins([[withBundleAnalyzer],], {
 
     return {
       ...config,
-      mode: prod ? 'production' : 'development',
-      devtool: prod ? 'hidden-source-map' : 'eval',
+      mode: prod ? "production" : "development",
+      devtool: prod ? "hidden-source-map" : "eval",
       plugins: [
         ...config.plugins,
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /^\.\/ko$/),
       ],
-    };;
+    };
   },
-});   
-
-
-
-
-
+});
 
 // module.exports = withBundleAnalyzer({
 //   compress: true,
